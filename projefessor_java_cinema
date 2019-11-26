@@ -1,0 +1,133 @@
+public class AulaMetodo {
+
+	public static void main(String[] args) {
+  		Scanner leitura = new Scanner(System.in);
+    	int opc;
+    
+    	String matrizFilmes[][] = { {"Tarzan", "Coringa", "De volta para o futuro."}, {"Tarzan", "Tarzan", "De volta para o Futuro"}, {"Coringa", "Tarzan", "Coringa"} };
+    
+      do{
+        exibirMenu();
+        opc = leitura.nextInt();
+        
+        switch(opc)
+        {
+          case 0: 
+            	sout("Saindo..");
+            break;
+          case 1:
+            	do{
+            	exibirListaFilmes(matrizFilme);
+              sout("Informe o filme: ")
+                  filme = leitura.nextInt();
+              exibirSessoes();
+              sout("Informe a sessao");
+              char sessao = leitura.next().charAt(0);
+
+              mostrarAssentos(matriz);
+              sout("Informe a fileira que deseja comprar : ");
+              char fileira = leitura.next().charAt(0);
+              int fileiraNumerica = converteFileiraCharToInt(fileira);
+
+              sout("Informe a poltrona: ")
+              int poltrona = leitura.nextInt();
+
+              String bilhete = montarBilhete(fileira, poltrona, filme, sessao, entrada);
+            
+            	sout("Deseja continuar comprando? (1 - sim ; 0 - nao)");
+            	opcVenda = leitura.nextInt();
+              }while(opcVenda != 0);
+            
+        }
+
+      }while(opc != 0);
+  	}
+  
+  	public static String montarBilhete(char fileira, int poltrona, int filme, char sessao, int entrada)
+    {
+      String text = "";
+      
+      text += "ID: " + fileira + poltrona + "\n";
+      text += "Sessao: " + sessao + "\n";
+      text += "Filme: " + obterNomeDeFilme(filme) + "\n";
+      text += "Entrada: " + (entrada == 1) ? "Meia" : "Inteira" + "\n";
+      
+      
+    }
+  
+  	public static String obterNomeDeFilme(int filme) {
+      if (filme == 1)
+        	return "Tarzan";
+      else if (filme == 2)
+        	return "De volta para o futuro.";
+      else if(filme == 3)
+      		return "Coringa";
+      else 
+        	return "Not Found - 404";
+    }
+  
+  	public static int converteFileiraCharToInt(char fileira){
+      if(fileira == 'a' || filera == 'A')
+        return 0;
+      else if (fileira == 'b' || filera == 'B')
+        return 1;
+       else if (fileira == 'c' || filera == 'C')
+        return 2;
+       else if (fileira == 'd' || filera == 'D')
+        return 3;
+       else if (fileira == 'e' || filera == 'E')
+        return 4;
+       else if (fileira == 'f' || filera == 'F')
+        return 5;
+       else if (fileira == 'g' || filera == 'G')
+        return 6;
+       else if (fileira == 'h' || filera == 'H')
+        return 7;
+       else if (fileira == 'i' || filera == 'I')
+        return 8;
+       else if (fileira == 'j' || filera == 'J')
+        return 9;
+      
+    }
+    
+    public static void exibirMenu(){
+    
+    	sout("CINEMA ABC");
+      sout("(1) - Venda");
+      sout("(2) - Histórico");
+      sout("(3) - Relatório");
+      sout("(0) - Sair");
+      
+    }
+  
+   public static void exibirListaFilmes(String matrizFilme[][]){
+    
+     sout("\nFilmes em Cartaz")
+    	for(int i = 0 ; i < matrizFilme.length; i++)
+      {
+        for(int j = 0 ; j < matrizFilme[0].length; j++)
+        {
+            sout(matrizFilme[i][j] + "\t")
+        }
+        sout();
+      }
+      
+    }
+  
+  public static void mostrarAssentos(String matriz[][]){
+    
+    	for(int i = 0 ; i < matriz.length; i++)
+      {
+        for(int j = 0 ; j < matriz[0].length; j++)
+        {
+          if(matriz[i][j] == null)
+            sout("O\t")
+          else{
+            sout("X\t")
+          }
+        }
+        sout();
+      }
+      
+    }
+  }
